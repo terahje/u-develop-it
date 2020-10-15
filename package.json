@@ -23,5 +23,8 @@
   "homepage": "https://github.com/terahje/u-develop-it#readme",
   "devDependencies": {
     "jest": "^26.5.3"
+  },
+  "dependencies": {
+    "sqlite3": "^5.0.0"
   }
 }
