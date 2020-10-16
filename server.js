@@ -61,22 +61,23 @@ app.post('/api/candidate', ({ body }, res) => {
       res.status(400).json({ error: errors });
       return;
     }
+    
     const sql = `INSERT INTO candidates (first_name, last_name, industry_connected) 
               VALUES (?,?,?)`;
-const params = [body.first_name, body.last_name, body.industry_connected];
-// ES5 function, not arrow function, to use `this`
-db.run(sql, params, function(err, result) {
-  if (err) {
-    res.status(400).json({ error: err.message });
-    return;
-  }
+    const params = [body.first_name, body.last_name, body.industry_connected];
+    // ES5 function, not arrow function, to use `this`
+    db.run(sql, params, function(err, result) {
+    if (err) {
+        res.status(400).json({ error: err.message });
+        return;
+    }
 
-  res.json({
-    message: 'success',
-    data: body,
-    id: this.lastID
-  });
-});
+    res.json({
+        message: 'success',
+        data: body,
+        id: this.lastID
+    });
+    });
   });
 
 // Delete a candidate
